@@ -30,7 +30,7 @@
 * nickname varchar
 * team varchar
 * profile text
-* work varchae
+* work text
 * avator varchar
 
 ***以下、devise使用のため***

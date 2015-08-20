@@ -22,10 +22,15 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+#settings for password or some.
 gem 'rails_config'
-
+#for haml
 gem 'haml-rails'
+#devise for user login
+gem 'devise'
+#image uploader
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
