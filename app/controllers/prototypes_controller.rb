@@ -5,11 +5,12 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    prototype = Prototype.new(create_params)
-    prototype.tag_list.add("#{params[:prototype][:tag1]}", "#{params[:prototype][:tag2]}", "#{params[:prototype][:tag3]}")
-    if prototype.save
+    @prototype = Prototype.new(create_params)
+    @prototype.tag_list.add("#{params[:prototype][:tag1]}", "#{params[:prototype][:tag2]}", "#{params[:prototype][:tag3]}")
+    if @prototype.save
       redirect_to root_path
     else
+      3.times {@prototype.prototype_images.build}
       render 'new'
     end
   end
@@ -18,7 +19,9 @@ class PrototypesController < ApplicationController
   def create_params
     image_params = params.require(:prototype).require(:prototype_images_attributes)
     image_data = Hash.new
-    i=0
+    image_data["0"] = image_params["0"].permit(:type, :image)
+    image_params.delete("0")
+    i=1
     image_params.each do |key, image|
       if image.keys.include?("image")
         image_data[i.to_s] = image.permit(:type, :image)
