@@ -27,9 +27,12 @@ ActiveRecord::Schema.define(version: 20150820060606) do
     t.string   "title",      limit: 255
     t.string   "catch_copy", limit: 255
     t.text     "concept",    limit: 65535
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4
