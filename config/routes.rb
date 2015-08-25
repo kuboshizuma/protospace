@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'prototypes#index'
   resources :users, only: [:edit, :update, :show]
+  resources :tags, only: [:index, :show]
   resources :prototypes, only: [:new, :create, :show] do
     collection do
       get 'newest'

@@ -9,7 +9,7 @@
           =link_to 'Popular PROTO', root_path
         %li{role: "presentation", class: "#{'active' if type == 1}"}
           =link_to 'Newest PROTO', newest_prototypes_path
-      %button{:type => "button", :class => "btn btn-default col-lg-1"} View Tags
+      =link_to "View Tags", tags_path, class: "btn btn-default col-lg-1"
 .container.proto-list
   .row
     -prototypes.each do |prototype|
@@ -28,6 +28,6 @@
             %ul.proto-tag-list.list-inline
               -prototype.tags.each do |tag|
                 %li
-                  %a{:href => "#", :class => "btn btn-default"} #{tag.name}
+                  =link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
 .text-center
   =paginate(prototypes)
