@@ -1,16 +1,14 @@
 class PrototypesController < ApplicationController
   def index
-    @prototypes = Prototype.page(params[:page]).per(8).includes(:user).includes(:prototype_images).includes(:tags)
+    @prototypes = Prototype.page(params[:page]).per(8).includes(:user, :prototype_images, :tags)
   end
 
-  def newest
-    @prototypes = Prototype.order('updated_at DESC').page(params[:page]).per(8).includes(:user).includes(:prototype_images).includes(:tags)
+  def show
   end
-
 
   def new
     @prototype = Prototype.new
-    4.times {@prototype.prototype_images.build}
+    @prototype.prototype_images.build
   end
 
   def create
@@ -28,12 +26,12 @@ class PrototypesController < ApplicationController
   def create_params
     image_params = params.require(:prototype).require(:prototype_images_attributes)
     image_data = Hash.new
-    image_data["0"] = image_params["0"].permit(:type, :image)
+    image_data["0"] = image_params["0"].permit(:status, :image)
     image_params.delete("0")
     i=1
     image_params.each do |key, image|
       if image.keys.include?("image")
-        image_data[i.to_s] = image.permit(:type, :image)
+        image_data[i.to_s] = image.permit(:status, :image)
         i+=1
       end
     end

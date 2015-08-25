@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150820060606) do
 
   create_table "prototype_images", force: :cascade do |t|
     t.string   "image",        limit: 255
-    t.integer  "type",         limit: 4
+    t.integer  "status",       limit: 4
     t.integer  "prototype_id", limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

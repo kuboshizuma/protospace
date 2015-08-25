@@ -2,7 +2,7 @@ class CreatePrototypeImages < ActiveRecord::Migration
   def change
     create_table :prototype_images do |t|
       t.string :image
-      t.integer :type
+      t.integer :status
       t.integer :prototype_id
 
       t.timestamps null: false

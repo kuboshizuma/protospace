@@ -15,7 +15,7 @@
               .col-md-12
                 .cover-image-upload
                   =p.file_field :image
-                  =p.hidden_field :type, value: 0
+                  =p.hidden_field :status, value: 0
                   -i+=1
             -else
               =surround(i==1?"<div class='col-md-12'><ul class='proto-sub-list list-group'>".html_safe : "", i==3?"</ul></div>".html_safe : "") do
@@ -23,13 +23,13 @@
                   %li.list-group-item.col-md-4
                     .image-upload
                       =p.file_field :image
-                      =p.hidden_field :type, value: 1
+                      =p.hidden_field :status, value: 1
                       -i+=1
                 -elsif i==3
                   %li.list-group-item.col-md-4
                     .image-upload
                       =p.file_field :image
-                      =p.hidden_field :type, value: 1
+                      =p.hidden_field :status, value: 1
                       -i+=1
                   %li.list-group-item.col-md-4{style: "display:none;"}
                     .image-upload-plus

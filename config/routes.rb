@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   root 'prototypes#index'
   resources :users, only: [:edit, :update, :show]
   resources :tags, only: [:index, :show]
-  resources :prototypes, only: [:new, :create, :show] do
-    collection do
-      get 'newest'
-    end
+  namespace :prototypes do
+    resources :newest, only: [:index]
   end
+  resources :prototypes, only: [:new, :create, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
