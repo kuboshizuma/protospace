@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   def index
-    @prototypes = Prototype.page(params[:page]).per(8).includes(:user, :prototype_images, :tags)
+    @prototypes = Prototype.page(params[:page]).includes(:user, :prototype_images, :tags)
   end
 
   def show

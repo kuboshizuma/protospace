@@ -6,10 +6,10 @@ class Prototype < ActiveRecord::Base
 
   accepts_nested_attributes_for :prototype_images, reject_if: :reject_image
 
-  attr_reader :tag1, :tag2, :tag3
-
   validates_presence_of :title, :catch_copy, :concept
   validate :must_have_one_captured_image
+
+  paginates_per 8
 
   def reject_image(attributed)
     attributed[:name].blank?

@@ -22,8 +22,8 @@
                       .image-upload
                         = p.file_field :name
                         = p.hidden_field :status, value: :sub
-                    - if i==2
-                      %li.list-group-item.col-md-4{style: "display:none;"}
+                    - if i == 2
+                      %li.list-group-item.col-md-4{ style: "display:none;" }
                         .image-upload-plus
                           %span +
       .row.proto-description
@@ -41,4 +41,4 @@
             .col-md-3
               = text_field_tag "prototype[tag_list][]", "", placeholder: "Application"
       .row.text-center.proto-btn
-        %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Publish
+        %button.btn.btn-lg.btn-primary.btn-block{ type: "submit" } Publish
