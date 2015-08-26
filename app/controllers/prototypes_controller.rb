@@ -13,9 +13,8 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(create_params)
-    @prototype.tag_list.add("#{params[:prototype][:tag1]}", "#{params[:prototype][:tag2]}", "#{params[:prototype][:tag3]}")
     if @prototype.save
-      redirect_to root_path
+      redirect_to root_path, notice: "プロトタイプを新規登録しました!"
     else
       @prototype.prototype_images.build
       render 'new'
@@ -24,7 +23,7 @@ class PrototypesController < ApplicationController
 
   private
   def create_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, prototype_images_attributes: [:name, :status]).merge(user_id: current_user.id)
+    params.require(:prototype).permit(:title, :catch_copy, :concept, tag_list: [], prototype_images_attributes: [:name, :status]).merge(user_id: current_user.id)
   end
 
 end

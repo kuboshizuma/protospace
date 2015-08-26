@@ -8,5 +8,7 @@
     = csrf_meta_tags
   %body
     = render "layouts/header"
+    - unless flash[:notice].nil?
+      .alert.alert-success.top-alert #{flash[:notice]}
     = yield
     = render "layouts/footer"
