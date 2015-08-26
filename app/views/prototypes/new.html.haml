@@ -1,44 +1,44 @@
-=form_for(@prototype, html: {class: "container proto-new"}) do |f|
-  -if @prototype.errors.present?
+= form_for(@prototype, html: {class: "container proto-new"}) do |f|
+  - if @prototype.errors.present?
     .alert.alert-danger
       %image-upload
-        -@prototype.errors.full_messages.each do |message|
+        - @prototype.errors.full_messages.each do |message|
           %li #{message}
   .col-md-8.col-md-offset-2
     %header.row.user-nav.row
       .col-md-12
-        =f.text_field :title, placeholder: "Title", class: "proto-new-title"
+        = f.text_field :title, placeholder: "Title", class: "proto-new-title"
         .row
-          =f.fields_for :prototype_images do |p|
+          = f.fields_for :prototype_images do |p|
             .col-md-12
               .cover-image-upload
-                =p.file_field :image
-                =p.hidden_field :status, value: 0
+                = p.file_field :image
+                = p.hidden_field :status, value: 0
             .col-md-12
               %ul.proto-sub-list.list-group
-                -3.times do |i|
-                  =f.fields_for :prototype_images do |p|
+                - 3.times do |i|
+                  = f.fields_for :prototype_images do |p|
                     %li.list-group-item.col-md-4
                       .image-upload
-                        =p.file_field :image
-                        =p.hidden_field :status, value: 1
-                    -if i==2
+                        = p.file_field :image
+                        = p.hidden_field :status, value: 1
+                    - if i==2
                       %li.list-group-item.col-md-4{style: "display:none;"}
                         .image-upload-plus
                           %span +
       .row.proto-description
         .col-md-12
-          =f.text_field :catch_copy, placeholder: "Catch Copy"
+          = f.text_field :catch_copy, placeholder: "Catch Copy"
         .col-md-12
-          =f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+          = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
         .col-md-12
           %h4 Tag List
           .row
             .col-md-3
-              =f.text_field :tag1, placeholder: "Web Design"
+              = f.text_field :tag1, placeholder: "Web Design"
             .col-md-3
-              =f.text_field :tag2, placeholder: "UI"
+              = f.text_field :tag2, placeholder: "UI"
             .col-md-3
-              =f.text_field :tag3, placeholder: "Application"
+              = f.text_field :tag3, placeholder: "Application"
       .row.text-center.proto-btn
         %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Publish

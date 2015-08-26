@@ -6,11 +6,11 @@
       %h3 #{prototype.title}
       .proto-meta
         .proto-user
-          =link_to "by #{prototype.user.nickname}", user_path(prototype.user.id)
+          = link_to "by #{prototype.user.nickname}", user_path(prototype.user.id)
         .proto-posted
-          =simple_time(prototype.updated_at)
+          = simple_time(prototype.updated_at)
 
       %ul.proto-tag-list.list-inline
         -prototype.tags.each do |tag|
           %li
-            =link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
+            = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
