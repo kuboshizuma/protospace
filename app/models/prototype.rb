@@ -1,5 +1,5 @@
 class Prototype < ActiveRecord::Base
-  acts_as_taggable_on :tags
+  acts_as_taggable
 
   has_many :prototype_images
   belongs_to :user
