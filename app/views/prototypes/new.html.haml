@@ -12,16 +12,16 @@
           = f.fields_for :prototype_images do |p|
             .col-md-12
               .cover-image-upload
-                = p.file_field :image
-                = p.hidden_field :status, value: 0
+                = p.file_field :name
+                = p.hidden_field :status, value: :main
             .col-md-12
               %ul.proto-sub-list.list-group
                 - 3.times do |i|
                   = f.fields_for :prototype_images do |p|
                     %li.list-group-item.col-md-4
                       .image-upload
-                        = p.file_field :image
-                        = p.hidden_field :status, value: 1
+                        = p.file_field :name
+                        = p.hidden_field :status, value: :sub
                     - if i==2
                       %li.list-group-item.col-md-4{style: "display:none;"}
                         .image-upload-plus
