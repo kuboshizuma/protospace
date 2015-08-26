@@ -10,5 +10,7 @@
     = render "layouts/header"
     - unless flash[:notice].nil?
       .alert.alert-success.top-alert #{flash[:notice]}
+    - unless flash[:alert].nil?
+      .alert.alert-danger.top-alert #{flash[:alert]}
     = yield
     = render "layouts/footer"
