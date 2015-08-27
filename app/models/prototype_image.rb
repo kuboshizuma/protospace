@@ -1,6 +1,9 @@
 class PrototypeImage < ActiveRecord::Base
-  self.inheritance_column = :_type_disabled
+  enum status: [ :main, :sub ]
+
   belongs_to :prototype
-  mount_uploader :image, ImageUploader
-  validates_presence_of :image
+
+  mount_uploader :name, PrototypeImageUploader
+
+  validates_presence_of :name
 end
