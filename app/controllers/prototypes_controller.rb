@@ -1,4 +1,13 @@
 class PrototypesController < ApplicationController
+  def index
+    @prototypes = Prototype.page(params[:page]).per(8).includes(:user).includes(:prototype_images).includes(:tags)
+  end
+
+  def newest
+    @prototypes = Prototype.order('updated_at DESC').page(params[:page]).per(8).includes(:user).includes(:prototype_images).includes(:tags)
+  end
+
+
   def new
     @prototype = Prototype.new
     4.times {@prototype.prototype_images.build}
@@ -28,7 +37,7 @@ class PrototypesController < ApplicationController
         i+=1
       end
     end
-    params.require(:prototype).permit(:title, :catch_copy, :concept).merge(:prototype_images_attributes => image_data)
+    params.require(:prototype).permit(:title, :catch_copy, :concept).merge(user_id: current_user.id, prototype_images_attributes: image_data)
   end
 
 end
