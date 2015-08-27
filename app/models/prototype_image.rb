@@ -3,7 +3,7 @@ class PrototypeImage < ActiveRecord::Base
 
   belongs_to :prototype
 
-  mount_uploader :name, ImageUploader
+  mount_uploader :name, PrototypeImageUploader
 
   validates_presence_of :name
 end
