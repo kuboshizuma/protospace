@@ -1,0 +1,52 @@
+=form_for(@prototype, html: {class: "container proto-new"}) do |f|
+  -if @prototype.errors.present?
+    .alert.alert-danger
+      %image-upload
+        -@prototype.errors.full_messages.each do |message|
+          %li #{message}
+  .col-md-8.col-md-offset-2
+    %header.row.user-nav.row
+      .col-md-12
+        =f.text_field :title, placeholder: "Title", class: "proto-new-title"
+        .row
+          -i=0
+          =f.fields_for :prototype_images do |p|
+            -if i==0
+              .col-md-12
+                .cover-image-upload
+                  =p.file_field :image
+                  =p.hidden_field :type, value: 0
+                  -i+=1
+            -else
+              =surround(i==1?"<div class='col-md-12'><ul class='proto-sub-list list-group'>".html_safe : "", i==3?"</ul></div>".html_safe : "") do
+                -if i==1 || i==2
+                  %li.list-group-item.col-md-4
+                    .image-upload
+                      =p.file_field :image
+                      =p.hidden_field :type, value: 1
+                      -i+=1
+                -elsif i==3
+                  %li.list-group-item.col-md-4
+                    .image-upload
+                      =p.file_field :image
+                      =p.hidden_field :type, value: 1
+                      -i+=1
+                  %li.list-group-item.col-md-4{style: "display:none;"}
+                    .image-upload-plus
+                      %span +
+      .row.proto-description
+        .col-md-12
+          =f.text_field :catch_copy, placeholder: "Catch Copy"
+        .col-md-12
+          =f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              =f.text_field :tag1, placeholder: "Web Design"
+            .col-md-3
+              =f.text_field :tag2, placeholder: "UI"
+            .col-md-3
+              =f.text_field :tag3, placeholder: "Application"
+      .row.text-center.proto-btn
+        %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Publish
