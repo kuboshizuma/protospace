@@ -5,6 +5,8 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.find(params[:id])
+    @like_count = @prototype.likes.count
+    @like_status = Like.exists?(prototype_id: params[:id], user_id: current_user.id)
   end
 
   def new

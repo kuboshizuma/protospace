@@ -13,10 +13,11 @@
               = @prototype.user.work
 
     .col-md-6.text-right
-      %button.btn.btn-default
-        = image_tag("icon_heart.svg")
+      %button.btn.btn-default{ class: (@like_status) ? "decrement-button" : "increment-button", data: { id: @prototype.id } }
+        = image_tag("#{@like_status ? 'icon_heart_red.svg' : 'icon_heart.svg'}")
         Like
-        %span.num 20
+        %span.num
+          = @like_count
   .row
     .col-md-9
       = image_tag main_image(@prototype), class: 'img-responsive'
