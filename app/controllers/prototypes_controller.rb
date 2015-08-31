@@ -5,6 +5,9 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.find(params[:id])
+    @comments = @prototype.comments.includes(:user)
+    @new_comment = @prototype.comments.build
+    @comment_count = @comments.count
   end
 
   def new
