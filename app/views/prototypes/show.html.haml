@@ -3,14 +3,14 @@
     .col-md-6
       .media
         .media-left
-          = link_to user_path(@prototype.user) do
-            = image_tag @prototype.user.avator, width: "64px", height: "64px", alt: "#{@prototype.user.nickname}"
+          = link_to (image_tag @prototype.user.avator, width: "64px", height: "64px", alt: "#{@prototype.user.nickname}"), user_path(@prototype.user)
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
           .proto-user
             = link_to "by #{@prototype.user.nickname}", user_path(@prototype.user)
-            %span.degree= @prototype.user.work
+            %span.degree
+              = @prototype.user.work
 
     .col-md-6.text-right
       %button.btn.btn-default
