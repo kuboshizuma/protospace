@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @prototypes = @user.prototypes.includes(:prototype_images, :tags).page(params[:page])
   end
   def edit
     @user = User.find(params[:id])
