@@ -1,0 +1,35 @@
+$(function(){
+  $(document).on('click', '.increment-button, .decrement-button', function(){
+    var button = $(this)
+    var prototype_id = button.attr("data-id");
+    like_status = (button.hasClass('increment-button')) ? true : false;
+    if (like_status) {
+      $.ajax({
+        type: "POST",
+        url: '/likes',
+        dataType: 'json',
+        data: {
+          prototype_id: prototype_id
+           },
+        success: function(data){
+          button.toggleClass('increment-button').toggleClass('decrement-button');
+          button.children('.num').text(data.all_count);
+          heart_img = (button.hasClass('increment-button')) ? "<%= asset_path("icon_heart.svg") %>" : "<%= asset_path("icon_heart_red.svg") %>";
+          button.children('img').attr('src', heart_img);
+        }
+      });
+    }else{
+      $.ajax({
+        type: "DELETE",
+        url: '/likes/' + prototype_id,
+        dataType: 'json',
+        success: function(data){
+          button.toggleClass('increment-button').toggleClass('decrement-button');
+          button.children('.num').text(data.all_count);
+          heart_img = (button.hasClass('increment-button')) ? "<%= asset_path("icon_heart.svg") %>" : "<%= asset_path("icon_heart_red.svg") %>";
+          button.children('img').attr('src', heart_img);
+        }
+      });
+    }
+  });
+});
