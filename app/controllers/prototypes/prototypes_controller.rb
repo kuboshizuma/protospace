@@ -1,4 +1,4 @@
-class PrototypesController < ApplicationController
+class Prototypes::PrototypesController < ApplicationController
   def index
     @prototypes = Prototype.page(params[:page]).includes(:user, :prototype_images, :tags)
   end

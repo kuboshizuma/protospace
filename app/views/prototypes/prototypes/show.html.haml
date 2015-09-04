@@ -45,7 +45,7 @@
       %span.num (#{@comment_count})
     .col-md-8
       #comment_list
-        = render partial: 'comment', collection: @comments
+        = render partial: '/prototypes/comment', collection: @comments
       =form_for [@prototype, @new_comment], { class: 'form-inline', remote: true } do |f|
         %h4 Write a comment
         .row

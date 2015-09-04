@@ -5,7 +5,7 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li{role: "presentation", class: "#{'active' if params[:controller] == 'prototypes' && params[:action] == 'index'}"}
+        %li{role: "presentation", class: "#{'active' if params[:controller] == 'prototypes/prototypes' && params[:action] == 'index'}"}
           = link_to 'Popular PROTO', root_path
         %li{role: "presentation", class: "#{'active' if params[:controller] == 'prototypes/newest' && params[:action] == 'index'}"}
           = link_to 'Newest PROTO', prototypes_newest_index_path
