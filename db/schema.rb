@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150831171430) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+ActiveRecord::Schema.define(version: 20150831073459) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
