@@ -1,5 +1,5 @@
 $(function(){
-  $('.img_input').each(function(){
+  $('.img_preview').each(function(){
     var selfInput = $(this).find('input[type=file]');
     selfInput.change(function(){
       var file = selfInput[0].files[0];
