@@ -1,6 +1,9 @@
 class Prototypes::PrototypesController < ApplicationController
+
   def index
-    @prototypes = Prototype.page(params[:page]).includes(:user, :prototype_images, :tags)
+    popular_ids = Prototype.joins('left join likes on prototypes.id = likes.prototype_id').group('prototypes.id').order('count_prototype_id desc').count('prototype_id').keys
+    @prototypes = Prototype.where(id: popular_ids).includes(:user, :prototype_images, :tags).page(params[:page]).index_by(&:id).slice(*popular_ids).values
+    @prototype_pagination = Prototype.where(id: popular_ids).page(params[:page])
   end
 
   def show
