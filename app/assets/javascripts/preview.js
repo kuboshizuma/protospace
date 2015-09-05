@@ -13,3 +13,12 @@ $(function(){
     });
   });
 });
+
+$(function(){
+  var last_image_input = $('.list-group-item:nth-child(3)')
+  last_image_input.css('display', 'none');
+  $('.list-group-item-plus').on('click', function(){
+    $(this).css('display', 'none');
+    last_image_input.css('display', 'block');
+  });
+});
