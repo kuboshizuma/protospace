@@ -4,7 +4,6 @@ $(function(){
     selfInput.change(function(){
       var file = selfInput[0].files[0];
       $img = $(this).siblings('img')
-      console.log(file);
       fileRdr = new FileReader();
       fileRdr.onload = function(event) {
         $img.attr('src', event.target.result);

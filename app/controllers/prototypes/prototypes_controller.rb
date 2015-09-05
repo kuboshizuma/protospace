@@ -1,10 +1,13 @@
-class PrototypesController < ApplicationController
+class Prototypes::PrototypesController < ApplicationController
   def index
     @prototypes = Prototype.page(params[:page]).includes(:user, :prototype_images, :tags)
   end
 
   def show
     @prototype = Prototype.find(params[:id])
+    @comments = @prototype.comments.includes(:user)
+    @new_comment = @prototype.comments.build
+    @comment_count = @comments.count
     @like_count = @prototype.likes.count
     @like_status = Like.exists?(prototype_id: params[:id], user_id: current_user.id)
   end
