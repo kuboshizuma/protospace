@@ -1,6 +1,7 @@
 class Prototypes::PrototypesController < ApplicationController
+
   def index
-    @prototypes = Prototype.page(params[:page]).includes(:user, :prototype_images, :tags)
+    @prototypes = Prototype.order(like_count: :desc).page(params[:page])
   end
 
   def show
