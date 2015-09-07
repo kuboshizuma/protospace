@@ -1,6 +1,6 @@
 = render partial: 'prototypes/prototype_header'
 .container.proto-list
   .row
-    = render partial: '/prototypes/prototype', collection: @prototype_pagination
+    = render partial: '/prototypes/prototype', collection: @prototypes
 .text-center
-  = paginate(@prototype_pagination)
+  = paginate(@prototypes)

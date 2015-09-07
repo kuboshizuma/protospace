@@ -1,9 +1,7 @@
 class Prototypes::PrototypesController < ApplicationController
 
   def index
-    popular_ids = Prototype.joins('left join likes on prototypes.id = likes.prototype_id').group('prototypes.id').order('count_prototype_id desc').count('prototype_id').keys
-    @prototypes = Prototype.where(id: popular_ids).includes(:user, :prototype_images, :tags).index_by(&:id).slice(*popular_ids).values
-    @prototype_pagination = Kaminari.paginate_array(@prototypes).page(params[:page]).per(8)
+    @prototypes = Prototype.order(like_count: :desc).page(params[:page])
   end
 
   def show
