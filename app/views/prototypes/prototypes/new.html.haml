@@ -11,7 +11,7 @@
         .row
           = f.fields_for :prototype_images do |p|
             .col-md-12
-              .cover-image-upload.img_input
+              .cover-image-upload.img_input.img_preview
                 = p.file_field :name
                 = p.hidden_field :status, value: :main
                 = image_tag "", width: "100%", height: "100%", style: "display: none;"
@@ -20,12 +20,12 @@
                 - 3.times do |i|
                   = f.fields_for :prototype_images do |p|
                     %li.list-group-item.col-md-4
-                      .image-upload.img_input
+                      .image-upload.img_input.img_preview
                         = p.file_field :name
                         = p.hidden_field :status, value: :sub
                         = image_tag "", width: "100%", height: "100%", style: "display: none;"
                     - if i == 2
-                      %li.list-group-item.col-md-4{ style: "display:none;" }
+                      %li.list-group-item.col-md-4.list-group-item-plus
                         .image-upload-plus
                           %span +
       .row.proto-description
