@@ -23,6 +23,7 @@ class Prototypes::PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path, notice: "プロトタイプを新規登録しました!"
     else
+      @prototype.prototype_images.delete_all
       @prototype.prototype_images.build
       render 'new'
     end
