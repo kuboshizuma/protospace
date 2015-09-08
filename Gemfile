@@ -35,8 +35,6 @@ gem 'rmagick'
 gem 'acts-as-taggable-on', '~> 3.4'
 #pagination
 gem 'kaminari'
-#for turbolinks
-gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

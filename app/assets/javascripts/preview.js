@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('page:load', function(){
   $('.img_preview').each(function(){
     var $selfInput = $(this).find('input[type=file]');
     $selfInput.change(function(){
@@ -12,9 +12,7 @@ $(function(){
       $img.css('display', 'inline');
     });
   });
-});
 
-$(function(){
   var $lastImageInput = $('.list-group-item:nth-child(3)')
   $lastImageInput.css('display', 'none');
   $('.list-group-item-plus').on('click', function(){
