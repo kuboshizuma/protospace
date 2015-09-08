@@ -1,4 +1,4 @@
-$(document).on('page:load', function(){
+$(document).on('ready page:load', function(){
   $('.img_preview').each(function(){
     var $selfInput = $(this).find('input[type=file]');
     $selfInput.change(function(){
