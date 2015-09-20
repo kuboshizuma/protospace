@@ -60,3 +60,13 @@ group :development, :test do
   gem 'better_errors'
 end
 
+group :production, :staging do
+  gem 'unicorn'
+  gem 'capistrano',          require: false
+  gem 'capistrano-rails',    require: false
+  gem 'capistrano-rbenv',    require: false
+  gem 'capistrano-bundler',  require: false
+  gem 'capistrano3-unicorn', require: false
+  gem 'slackistrano',        require: false  
+end
+
