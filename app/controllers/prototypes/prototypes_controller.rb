@@ -10,7 +10,7 @@ class Prototypes::PrototypesController < ApplicationController
     @new_comment = @prototype.comments.build
     @comment_count = @comments.count
     @like_count = @prototype.likes.count
-    @like_status = Like.exists?(prototype_id: params[:id], user_id: current_user.id)
+    @like_status = Like.exists?(prototype_id: params[:id], user_id: current_user.id) if user_signed_in?
   end
 
   def new
