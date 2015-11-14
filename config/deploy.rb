@@ -23,7 +23,7 @@ set :deploy_to, '/var/www/rails/protospace'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/settings.yml}
+set :linked_files, %w{config/settings/production.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -33,6 +33,13 @@ set :linked_files, %w{config/settings.yml}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+#
+set :rbenv_type, :user # :system or :user
+# rubyversion
+set :rbenv_ruby, '2.1.3'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
 namespace :deploy do
 
