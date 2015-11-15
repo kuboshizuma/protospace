@@ -26,7 +26,7 @@ set :deploy_to, '/var/www/rails/protospace'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/settings/production.yml}
+set :linked_files, %w{'config/settings/production.yml', 'tmp/pids', 'tmp/cache', 'tmp/sockets' }
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
