@@ -36,7 +36,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 #pagination
 gem 'kaminari'
 #capistrano
-gem 'capistrano'
+gem 'capistrano', '~> 3.2.1'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
