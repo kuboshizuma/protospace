@@ -49,6 +49,9 @@ namespace :deploy do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
+    on roles(:app) do
+      invoke 'unicorn:restart'
+    end
   end
 
   after :publishing, :restart
@@ -60,10 +63,5 @@ namespace :deploy do
       #   execute :rake, 'cache:clear'
       # end
     end
-
-    on roles(:app) do
-      invoke 'unicorn:restart'
-    end
-
   end
 end
