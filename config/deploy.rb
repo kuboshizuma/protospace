@@ -60,6 +60,10 @@ namespace :deploy do
       #   execute :rake, 'cache:clear'
       # end
     end
-  end
 
+    on roles(:app) do
+      invoke 'unicorn:restart'
+    end
+
+  end
 end
